@@ -17,13 +17,17 @@ namespace Services.Tax.Infrastructure.Utils
             if (amount <= PersonalAllowance)
                 tax = 0;
 
-            if (amount <= HigherRateLimit)
+            else if (amount <= HigherRateLimit)
                 tax = (amount - PersonalAllowance) * BasicRate;
+            else
+            {
+                decimal basicTax = (HigherRateLimit - PersonalAllowance) * BasicRate;
+                decimal higherTax = (amount - HigherRateLimit) * HigherRate;
 
-            decimal basicTax = (HigherRateLimit - PersonalAllowance) * BasicRate;
-            decimal higherTax = (amount - HigherRateLimit) * HigherRate;
+                tax = basicTax + higherTax;
+            }
 
-            return basicTax + higherTax;
+            return tax;
         }
     }
 }
