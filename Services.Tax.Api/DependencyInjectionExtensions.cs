@@ -1,11 +1,15 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Services.Tax.Domain.Configuration;
 using System.Reflection;
+using System.Text;
 
 namespace Services.Tax.Api
 {
     public static class DependencyInjectionExtensions
     {
-        public static IServiceCollection RegisterWebApi(this IServiceCollection services)
+        public static IServiceCollection RegisterWebApi(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSwaggerGen(options =>
             {
@@ -45,6 +49,21 @@ namespace Services.Tax.Api
                     }
                 });
             });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Security:JwtSecretKey"] ?? throw new ArgumentNullException(nameof(SecurityOptions.JwtSecretKey))))
+                };
+            });
+
+            services.AddAuthorization();
 
             return services;
         }

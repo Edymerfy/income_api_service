@@ -1,9 +1,13 @@
 using Services.Tax.Api;
 using Services.Tax.Api.Middleware;
+using Services.Tax.Domain.Configuration;
 using Services.Tax.Infrastructure;
 using Services.Tax.Infrastructure.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<SecurityOptions>(
+    builder.Configuration.GetSection("Security"));
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -11,10 +15,13 @@ builder.Logging.AddConsole();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.RegisterWebApi();
+builder.Services.RegisterWebApi(builder.Configuration);
 builder.Services.RegisterInfrastructure();
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<RequestTimingMiddleware>();

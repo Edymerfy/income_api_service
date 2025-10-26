@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Tax.Domain.Api;
 using Services.Tax.Domain.Commands;
@@ -22,8 +23,10 @@ namespace Services.Tax.Api.Controllers
         /// <returns>Calculated income tax summary result.</returns>
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GeneralResponse<IncomeTaxSummaryResult>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("income")]
+        [Authorize]
         public async Task<IActionResult> CalculateIncomeTax([FromBody] IncomeTaxRequest request)
         {
             if (!ModelState.IsValid)

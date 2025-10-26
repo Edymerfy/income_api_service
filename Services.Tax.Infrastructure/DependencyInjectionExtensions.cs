@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Services.Tax.Infrastructure.DataAccess;
 using Services.Tax.Infrastructure.Interfaces;
+using Services.Tax.Infrastructure.Security;
 using Services.Tax.Infrastructure.Utils;
 using System.Reflection;
 
@@ -23,6 +24,7 @@ namespace Services.Tax.Infrastructure
             );
 
             services.AddSingleton<ITaxCalculator, IncomeTaxCalculator>();
+            services.AddSingleton<JwtTokenManager>();
 
             return services;
         }
