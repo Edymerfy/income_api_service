@@ -4,7 +4,7 @@
     {
         PerYear = 1,
         PerHalfYear = 2,
-        PerQuarter = 4,
-        PerMonth = 12,
+        PerQuarter = 3,
+        PerMonth = 4,
     }
 }
