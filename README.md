@@ -1,9 +1,9 @@
-# 🇬🇧 Overview
+### Overview
 
 **Service** designed to calculate income tax in the United Kingdom (UK).  
 The project implements JWT-based authentication, provides an endpoint for calculating income tax, and includes a health check to verify that the service is running.
 
-## 🧩 Dependencies & Libraries Used
+#### Dependencies & Libraries Used
 
 - **MediatR**
 - **Microsoft.AspNetCore.Authentication.JwtBearer**
@@ -14,7 +14,7 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 
 ---
 
-## 📁 Project Structure
+#### Project Structure
 
 ```
 .
@@ -29,9 +29,9 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 
 ---
 
-## ⚙️ Main Controllers and Methods
+#### HTTP Methods
 
-### **1. Authentication**
+##### **1. Authentication**
 ```csharp
 [HttpPost("login")]
 ```
@@ -42,7 +42,7 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 
 ---
 
-### **2. Income Tax Calculation**
+##### **2. Income Tax Calculation**
 ```csharp
 [HttpPost("calculate")]
 ```
@@ -50,7 +50,7 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 
 ---
 
-### **3. Health Check**
+##### **3. Health Check**
 ```csharp
 [HttpGet("health")]
 ```
@@ -59,7 +59,7 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 
 ---
 
-## 🔐 Configuring User Secrets
+#### Configuring User Secrets
 
 Before running the application, you must **configure User Secrets** to store the JWT secret key securely.
 
@@ -83,7 +83,7 @@ Before running the application, you must **configure User Secrets** to store the
 
 ---
 
-## ▶️ Running the Application Locally
+#### Running the Application Locally
 
 ```bash
 cd src/Services.Tax.Api
@@ -95,7 +95,7 @@ By default, the API will be available at:
 
 ---
 
-## 🐳 Running the Application in Docker
+#### Running the Application in Docker
 
 1. Build the Docker image:
    ```bash
@@ -112,7 +112,7 @@ By default, the API will be available at:
 
 ---
 
-## 🧪 Running Tests
+#### Running Tests
 
 To execute unit tests:
 
