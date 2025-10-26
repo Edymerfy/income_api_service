@@ -15,6 +15,14 @@ namespace Services.Tax.Api.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Calculates income tax for a given annual income.
+        /// </summary>
+        /// <param name="request">Annual income request.</param>
+        /// <returns>Calculated income tax summary result.</returns>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GeneralResponse<IncomeTaxSummaryResult>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("income")]
         public async Task<IActionResult> CalculateIncomeTax([FromBody] IncomeTaxRequest request)
         {
