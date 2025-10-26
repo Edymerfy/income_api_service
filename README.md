@@ -1,7 +1,6 @@
 ### Overview
 
-**Service** designed to calculate income tax in the United Kingdom (UK).  
-The project implements JWT-based authentication, provides an endpoint for calculating income tax, and includes a health check to verify that the service is running.
+Web API is designed to calculate income tax.  
 
 #### Dependencies & Libraries Used
 
@@ -19,12 +18,12 @@ The project implements JWT-based authentication, provides an endpoint for calcul
 ```
 .
 ├── src
-│   ├── Services.Tax.Api                # Web layer — controllers, DI setup, configuration
-│   ├── Services.Tax.Domain             # Business logic, entities, models
-│   └── Services.Tax.Infrastructure     # Repositories, services, utilities, and interface implementations
+│   ├── Services.Tax.Api
+│   ├── Services.Tax.Domain
+│   └── Services.Tax.Infrastructure
 │
 └── tests
-    └── Services.Tax.Infrastructure.Tests  # Unit tests for the Infrastructure layer
+    └── Services.Tax.Infrastructure.Tests
 ```
 
 ---
@@ -91,7 +90,7 @@ dotnet run
 ```
 
 By default, the API will be available at:  
-👉 http://localhost:8080/swagger
+http://localhost:8080/swagger
 
 ---
 
@@ -108,7 +107,7 @@ By default, the API will be available at:
    ```
 
 3. Open your browser at:  
-   👉 [http://localhost:8080/swagger](http://localhost:8080/swagger)
+   [http://localhost:8080/swagger](http://localhost:8080/swagger)
 
 ---
 
