@@ -9,7 +9,7 @@ namespace Services.Tax.Infrastructure.DataAccess
 
         public PeriodRepository(AppDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<IEnumerable<Period>> GetAllAsync()

@@ -13,7 +13,7 @@ namespace Services.Tax.Infrastructure.Security
 
         public JwtTokenManager(IOptions<SecurityOptions> securityOptions)
         {
-            _securityOptions = securityOptions.Value;
+            _securityOptions = securityOptions.Value ?? throw new ArgumentNullException(nameof(securityOptions));
         }
 
         public string GenerateJwtToken(string username)
