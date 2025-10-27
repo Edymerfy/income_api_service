@@ -6,11 +6,11 @@ namespace Services.Tax.Infrastructure.Tests.Utils
     public class IncomeTaxCalculatorTests
     {
         private readonly IncomeTaxCalculator _calculator =
-            new IncomeTaxCalculator(new List<ITaskBandStrategy>()
+            new IncomeTaxCalculator(new List<ITaxBandStrategy>()
             {
-                new TaskBandAStrategy(),
-                new TaskBandBStrategy(),
-                new TaskBandCStrategy(),
+                new TaxBandAStrategy(),
+                new TaxBandBStrategy(),
+                new TaxBandCStrategy(),
             });
 
         [Theory]
