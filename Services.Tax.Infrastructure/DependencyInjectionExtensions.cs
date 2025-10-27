@@ -23,7 +23,18 @@ namespace Services.Tax.Infrastructure
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
             );
 
-            services.AddSingleton<ITaxCalculator, IncomeTaxCalculator>();
+            services.AddScoped<ITaxCalculator, IncomeTaxCalculator>();
+
+            var strategyType = typeof(ITaskBandStrategy);
+            var assembly = typeof(ITaskBandStrategy).Assembly;
+
+            foreach (var type in assembly.GetTypes()
+                .Where(t => strategyType.IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract))
+            {
+                services.AddScoped(strategyType, type);
+            }
+
+
             services.AddSingleton<JwtTokenManager>();
 
             return services;
