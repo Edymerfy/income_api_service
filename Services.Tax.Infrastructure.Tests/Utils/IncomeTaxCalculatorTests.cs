@@ -1,10 +1,17 @@
-﻿using Services.Tax.Infrastructure.Utils;
+﻿using Services.Tax.Infrastructure.Interfaces;
+using Services.Tax.Infrastructure.Utils;
 
 namespace Services.Tax.Infrastructure.Tests.Utils
 {
     public class IncomeTaxCalculatorTests
     {
-        private readonly IncomeTaxCalculator _calculator = new();
+        private readonly IncomeTaxCalculator _calculator =
+            new IncomeTaxCalculator(new List<ITaskBandStrategy>()
+            {
+                new TaskBandAStrategy(),
+                new TaskBandBStrategy(),
+                new TaskBandCStrategy(),
+            });
 
         [Theory]
         [InlineData(0, 0)]
