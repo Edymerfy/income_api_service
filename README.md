@@ -39,6 +39,8 @@ Web API is designed to calculate income tax.
 - On success, returns a `token` which must be included in subsequent requests using the header:  
   `Authorization: Bearer <token>`.
 
+Please use `UserName` = admin and `Password` = password to get temporary token.  
+
 ---
 
 ##### **2. Income Tax Calculation**
