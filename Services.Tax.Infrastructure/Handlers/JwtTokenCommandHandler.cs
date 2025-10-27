@@ -10,7 +10,7 @@ namespace Services.Tax.Infrastructure.Handlers
 
         public JwtTokenCommandHandler(JwtTokenManager jwtTokenManager)
         {
-            _jwtTokenManager = jwtTokenManager;
+            _jwtTokenManager = jwtTokenManager ?? throw new ArgumentNullException(nameof(jwtTokenManager));
         }
 
         public Task<string?> Handle(GenerateJwtTokenUserQry request, CancellationToken cancellationToken)
