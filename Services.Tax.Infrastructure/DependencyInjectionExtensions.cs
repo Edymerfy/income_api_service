@@ -25,8 +25,8 @@ namespace Services.Tax.Infrastructure
 
             services.AddScoped<ITaxCalculator, IncomeTaxCalculator>();
 
-            var strategyType = typeof(ITaskBandStrategy);
-            var assembly = typeof(ITaskBandStrategy).Assembly;
+            var strategyType = typeof(ITaxBandStrategy);
+            var assembly = typeof(ITaxBandStrategy).Assembly;
 
             foreach (var type in assembly.GetTypes()
                 .Where(t => strategyType.IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract))

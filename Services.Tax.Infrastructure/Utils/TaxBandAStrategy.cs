@@ -1,6 +1,8 @@
-﻿namespace Services.Tax.Infrastructure.Utils
+﻿using Services.Tax.Infrastructure.Interfaces;
+
+namespace Services.Tax.Infrastructure.Utils
 {
-    public class TaskBandAStrategy : ITaskBandStrategy
+    public class TaxBandAStrategy : ITaxBandStrategy
     {
         private const decimal MaxRange = 5000M;
 

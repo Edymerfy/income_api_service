@@ -1,6 +1,6 @@
-﻿namespace Services.Tax.Infrastructure.Utils
+﻿namespace Services.Tax.Infrastructure.Interfaces
 {
-    public interface ITaskBandStrategy 
+    public interface ITaxBandStrategy 
     { 
         public decimal Rate { get; }
 

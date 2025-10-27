@@ -1,12 +1,12 @@
-﻿using Services.Tax.Infrastructure.Utils;
+﻿using Services.Tax.Infrastructure.Interfaces;
 
-namespace Services.Tax.Infrastructure.Interfaces
+namespace Services.Tax.Infrastructure.Utils
 {
     public class IncomeTaxCalculator : ITaxCalculator
     {
-        private readonly IEnumerable<ITaskBandStrategy> _taskBandStrategies;
+        private readonly IEnumerable<ITaxBandStrategy> _taskBandStrategies;
 
-        public IncomeTaxCalculator(IEnumerable<ITaskBandStrategy> taskBandStrategies)
+        public IncomeTaxCalculator(IEnumerable<ITaxBandStrategy> taskBandStrategies)
         {
             _taskBandStrategies = taskBandStrategies;
         }

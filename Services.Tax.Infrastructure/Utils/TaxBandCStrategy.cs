@@ -1,6 +1,8 @@
-﻿namespace Services.Tax.Infrastructure.Utils
+﻿using Services.Tax.Infrastructure.Interfaces;
+
+namespace Services.Tax.Infrastructure.Utils
 {
-    public class TaskBandCStrategy : ITaskBandStrategy
+    public class TaxBandCStrategy : ITaxBandStrategy
     {
         private const decimal MinRange = 20000M;
 
